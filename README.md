@@ -10,7 +10,7 @@ A set of template files that create a "shared brain" between you and your AI age
 
 ## Requirements
 
-You need an AI agent that can **read and write files autonomously**. This won't work with ChatGPT or Claude's web interface — they can read uploads but can't write back to a file system.
+You need an AI agent that can **read and write files on its own**. This won't work with ChatGPT or Claude's web interface — they can read uploads but can't write back to a file system.
 
 **Tools that work:**
 - [OpenClaw](https://openclaw.ai) — what I use (persistent agent with file access, messaging, tools)
@@ -18,16 +18,66 @@ You need an AI agent that can **read and write files autonomously**. This won't 
 - [Codex](https://openai.com/index/codex/) — OpenAI's coding agent
 - [Cursor](https://cursor.sh) / [Windsurf](https://codeium.com/windsurf) — AI-native code editors with file access
 
-Any system where the AI can read files, write files, and run between sessions will work.
+Any system where the AI can read files, write files, and persist them between sessions will work.
 
-## Quick Start
+## Setup
 
-1. Clone this repo into your agent's workspace
-2. Edit `USER.md` with your details (name, timezone, role, preferences)
-3. Edit `SOUL.md` to shape the agent's personality (or keep the default)
-4. Review `AGENTS.md` — this is the operating manual that tells the agent how to use the shared brain
-5. Start a session with your agent — it should read the files and begin building context
-6. Give it a few days. The `MEMORY.md` and `memory/` folder will fill up on their own.
+### What "agent workspace" means
+
+Every agentic tool has a folder where your AI agent operates — the directory it can read from and write to. This is its workspace:
+
+| Tool | Default workspace |
+|------|------------------|
+| **OpenClaw** | `~/.openclaw/workspace/` |
+| **Claude Code** | Whatever directory you launch it in (`cd my-project && claude`) |
+| **Codex** | The project directory you open it in |
+| **Cursor / Windsurf** | The folder you have open in the editor |
+
+The shared brain files need to live **inside that workspace** so the agent can access them.
+
+### Step by step
+
+**Option A: Clone with Git (if you have Git installed)**
+
+Open a terminal and navigate to your agent's workspace, then clone:
+
+```bash
+# Example for OpenClaw:
+cd ~/.openclaw/workspace
+git clone https://github.com/Jason-Cyr/ai-shared-brain.git .
+
+# Example for Claude Code — make a new project folder, then launch Claude in it:
+mkdir ~/ai-shared-brain
+cd ~/ai-shared-brain
+git clone https://github.com/Jason-Cyr/ai-shared-brain.git .
+claude
+```
+
+**Option B: Download manually (no Git needed)**
+
+1. Click the green **"Code"** button on this GitHub page
+2. Click **"Download ZIP"**
+3. Unzip the files into your agent's workspace folder
+
+**Option C: Copy the files by hand**
+
+If you'd rather start from scratch, create these files in your agent's workspace:
+- `SOUL.md`
+- `USER.md`
+- `AGENTS.md`
+- `MEMORY.md`
+- A `memory/` folder (empty — the agent creates daily notes here)
+
+Use the templates in this repo as a starting point.
+
+### After setup
+
+1. **Edit `USER.md`** — Fill in your name, timezone, role, and preferences
+2. **Edit `SOUL.md`** — Shape the agent's personality (or keep the default — it's a good start)
+3. **Review `AGENTS.md`** — This is the operating manual. The startup ritual at the top is what makes everything work.
+4. **Leave `MEMORY.md` alone** — It starts mostly empty. The agent fills it over time.
+5. **Start a session** with your agent. It should read the files and begin building context.
+6. **Give it a few days.** The memory folder and MEMORY.md will fill up on their own.
 
 ## File Structure
 
@@ -37,8 +87,9 @@ ai-shared-brain/
 ├── USER.md          # Layer 1: Your identity — who the agent is helping
 ├── AGENTS.md        # Layer 1: Operating manual — startup ritual, rules, behavior
 ├── MEMORY.md        # Layer 2: Long-term memory — curated by the agent over time
-├── memory/          # Layer 3: Episodic memory — daily notes
+├── memory/          # Layer 3: Episodic memory — daily notes (agent creates these)
 │   └── .gitkeep
+├── LICENSE          # MIT — use however you want
 └── README.md
 ```
 
@@ -69,9 +120,17 @@ That startup ritual is what creates continuity between sessions. Without it, the
 ## Tips
 
 - **Give it time.** The system gets dramatically better after 2-3 weeks as memory accumulates.
-- **Read MEMORY.md yourself.** It's a plain text file. You can see exactly what your AI "knows" about you. Correct it. Delete things. There's no black box.
+- **Read MEMORY.md yourself.** It's a plain text file. You can see exactly what your AI "knows" about you. Correct it. Delete things. There is no black box.
 - **The agent should write things down, not keep "mental notes."** If it doesn't write to a file, it won't remember next session.
 - **Start simple.** A few lines in each file is enough. You'll naturally add more over time.
+
+## Contributing
+
+Found a way to make this better? PRs welcome. This is meant to be a starting point that people adapt to their own workflows.
+
+## License
+
+[MIT](LICENSE) — use it however you want.
 
 ## About
 
