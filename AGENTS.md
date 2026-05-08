@@ -1,15 +1,13 @@
 # AGENTS.md — Operating Manual
 
-_This tells the agent how to use the shared brain. Read on every startup._
-
 ## Every Session — Startup Ritual
 
 Before doing anything else:
 
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` for today and yesterday (if they exist)
-4. Read `MEMORY.md` — your long-term memory
+3. Read `memory/YYYY-MM-DD.md` for today and one or two previous days (if they exist) as we may not talk every day
+4. Read `MEMORY.md` — this your long-term memory
 
 Don't ask permission. Just do it. This is how you maintain continuity between sessions.
 
@@ -48,4 +46,4 @@ If you want to remember something, write it to a file. Mental notes don't surviv
 
 ## Make It Yours
 
-This is a starting point. Add your own rules and conventions as you figure out what works for your workflow.
+MEMORY.md and files in the markdown directory are yours to modify and update.  Modify todays mardown file as needed to your preference, but try to keep previous days as a read only medium.
