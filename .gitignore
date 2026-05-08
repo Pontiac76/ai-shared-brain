@@ -1,7 +1,7 @@
 # Don't commit your actual memory files — they contain personal context
 # Uncomment these if you want to keep your memory private:
-# MEMORY.md
-# memory/*.md
-# !memory/.gitkeep
+MEMORY.md
+memory/*.md
+!memory/.gitkeep
 
 .DS_Store
